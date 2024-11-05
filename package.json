@@ -6,10 +6,34 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "prepare": "npx husky && lint-staged --concurrent false"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npx lint-staged --concurrent false",
+      "pre-push": "npx lint-staged -concurrent false"
+    }
+  },
+  "lint-staged": {
+    "*.ts": [
+      "eslint --fix \"**/*.ts\"",
+      "prettier * --write",
+      "git commit . -F --allow-empty"
+    ],
+    "*.html": [
+      "prettier --write",
+      "git commit . -F --alow-empty"
+    ],
+    "*.scss": [
+      "prettier --write",
+      "stylelint \\\"**/*.scss\\\" --fix -f",
+      "git commit --allow-empty .  -F "
+    ]
   },
   "private": true,
   "dependencies": {
+    "@angular-eslint/eslint-plugin": "^18.4.0",
     "@angular/animations": "^18.2.0",
     "@angular/common": "^18.2.0",
     "@angular/compiler": "^18.2.0",
@@ -26,13 +50,27 @@
     "@angular-devkit/build-angular": "^18.2.10",
     "@angular/cli": "^18.2.10",
     "@angular/compiler-cli": "^18.2.0",
+    "@antfu/eslint-config": "^3.8.0",
+    "@commitlint/config-conventional": "^19.5.0",
     "@types/jasmine": "~5.1.0",
+    "eslint": "^9.14.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-playwright": "^0.15.3",
+    "eslint-plugin-regex": "^1.10.0",
+    "eslint-plugin-unicorn": "^51.0.1",
+    "eslint-plugin-unused-imports": "^3.1.0",
+    "husky": "^9.1.6",
     "jasmine-core": "~5.2.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "lint-staged": "^15.2.10",
+    "prettier": "^3.3.3",
+    "stylelint": "^16.10.0",
+    "stylelint-config-standard-scss": "^3.0.0",
+    "stylelint-order": "^5.0.0",
     "typescript": "~5.5.2"
   }
 }

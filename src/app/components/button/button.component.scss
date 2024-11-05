@@ -1,0 +1,39 @@
+@use'@global/styles/mixins';
+
+:host {
+  @include mixins.clear-button();
+  @include mixins.clear-button();
+  color: currentColor;
+
+  &[data-appearance='input-button'] {
+    background: var(--input-buton-bg);
+    width: var(--height-s);
+    height: var(--height-s);
+  }
+
+  &[data-appearance='icon-button'] {
+    padding: 0.4rem;
+    width: max-content;
+  }
+}
+
+.wrapper {
+  display: flex;
+  gap: 0.3rem;
+  height: max-content;
+  width: max-content;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  display: flex;
+  min-width: 0.5625rem;
+  min-height: 0.5625rem;
+  background: currentColor;
+  max-width: 1.5rem;
+  max-height: 1.5rem;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  margin: 0 auto;
+}

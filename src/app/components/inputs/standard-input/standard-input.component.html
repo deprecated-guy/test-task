@@ -1,0 +1,52 @@
+<div class="wrapper"    [class.disabled]="disabled()">
+    <div
+        class="input-wrapper"
+        [class.errored]="parenControl.invalid && parenControl.touched"
+        (focusout)="onFocusOut()"
+
+    >
+        @if((!value() || !parenControl.value) && type() !== 'number') {
+            <div class="placeholder">
+                <ng-content></ng-content>
+            </div>
+        }
+
+        <input
+            class="input"
+            [ngModel]="value()"
+            [ngModelOptions]="{standalone: true}"
+            (ngModelChange)="onModelChange($event)"
+            [type]="type()"
+            #nativeInput
+        >
+
+        @if (cleaner() && isNotSpaceOrEmptyString() && type() !== 'number') {
+            <app-text-field-cleaner class="cleaner" (clear)="onClear()"></app-text-field-cleaner>
+        }
+        @if (passwordOpener() && type() === 'password') {
+            <app-password-opener class="opener" (show)="showHidePassword($event)"></app-password-opener>
+        }
+    </div>
+
+    @if(type() === 'number') {
+        <div class="buttons-wrapper">
+            <button
+                class="button"
+                appButton
+                appearance="input-button"
+                direction="up"
+                iconType="colored"
+                (click)="add()"
+            ></button>
+            <div class="hr"></div>
+            <button
+                class="button"
+                appButton
+                appearance="input-button"
+                direction="bottom"
+                iconType="colored"
+                (click)="remove()"
+            ></button>
+        </div>
+    }
+</div>

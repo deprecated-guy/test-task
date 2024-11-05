@@ -1,0 +1,8 @@
+<div class="wrapper">
+    <div class="label" (click)="onClick()">
+        <ng-content></ng-content>
+    </div>
+    <div class="checkbox" (click)="onClick()" [class.checked]="value()">
+        <input type="checkbox">
+    </div>
+</div>

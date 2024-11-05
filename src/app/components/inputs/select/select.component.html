@@ -1,0 +1,19 @@
+
+<div class="select-container" (click)="openCloseDropDown()">
+    <div class="label">
+        <ng-content></ng-content>
+    </div>
+    <div class="select-input">
+        <input [ngModel]="value()" [ngModelOptions]="{standalone: true}">
+    </div>
+
+    <div class="icon" [@rotation]="open() ? 'rotated' : 'default'" (click)="openCloseDropDown()">
+        <img src="chevron.png" alt="">
+    </div>
+</div>
+
+@if(open()) {
+    <app-dropdown [items]="items()" [element]="value()" (elementChange)="setOpen($event)" @dropdown></app-dropdown>
+}
+
+

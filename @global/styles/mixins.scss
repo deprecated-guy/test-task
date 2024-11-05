@@ -1,0 +1,97 @@
+@mixin clear-input() {
+  outline: none;
+  border: none;
+  appearance: none;
+}
+
+@mixin hr-horizontal($bg: white) {
+  width: auto;
+  height: 1px;
+  background: $bg;
+}
+
+@mixin triangle($direction: up, $size: 10px, $color: rgba(157, 157, 157, 1)) {
+  width: 0;
+  height: 0;
+  border-style: solid;
+
+  @if $direction == up {
+    border-width: $size $size 0 $size;
+    border-color: transparent transparent transparent $color;
+    transform: rotate(136deg);
+  }
+  @else if $direction == down {
+    border-width: 0 $size $size $size;
+    border-color: transparent transparent $color transparent;
+    transform: rotate(180deg);
+  }
+  @else if $direction == left {
+    border-width: $size 0 $size $size;
+    border-color: transparent transparent transparent $color;
+    transform: rotate(-90deg);
+  }
+  @else if $direction == right {
+    border-width: $size $size $size 0;
+    border-color: transparent transparent transparent $color;
+    transform: rotate(90deg);
+  }
+  @else {
+    @warn "Направление '#{$direction}' не поддерживается. Используйте 'up', 'down', 'left' или 'right'.";
+  }
+
+  display: inline-block;
+}
+
+@mixin hr-vertical() {
+  flex-shrink: 0;
+  flex-basis: 1px;
+  width: 1px;
+  height: auto;
+
+  background-color: var(--color-dark-04);
+}
+@mixin img-responsive() {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+@mixin checked() {
+  &.checked {
+    position: relative;
+    background: rgba(255, 231, 131, 1);
+    transition: .3s all;
+
+    &:before {
+      transform: translateX(30%) translateY(30%);
+      width: 13px;
+      height: 13px;
+      position: absolute;
+      content: '';
+      mask-position: center;
+      mask-repeat: no-repeat;
+      mask-image: url("../../public/check.png");
+      background: black;
+      transition: .3s all;
+    }
+  }
+}
+
+@mixin clear-button($fontInherit: true) {
+  @if $fontInherit {
+    font-size: inherit;
+    line-height: inherit;
+  }
+
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+  appearance: none;
+}
+
+@mixin clear-link {
+  text-decoration: none;
+}

@@ -1,0 +1,18 @@
+<form [formGroup]="form">
+    <div class="fomfild">
+        <app-standard-input
+                [formControlName]="'test'"
+                [type]="'password'"
+                [textFieldCleaner]="true"
+                [textFieldPasswordOpener]="true"
+        >
+            Например, ВолГУ
+        </app-standard-input>
+
+        <app-error [errors]="[] | fieldError | async" [formControl]="form.controls.test"></app-error>
+    </div>
+
+    <input type="checkbox" appCheckbox [formControlName]="'bl'">
+
+    <app-select [formControlName]="'bl1'" [items]="items"></app-select>
+</form>

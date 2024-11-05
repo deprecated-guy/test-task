@@ -1,0 +1,12 @@
+
+<div class="dropdown">
+    @for (item of items(); track $index) {
+        <div
+            class="option"
+            role="option"
+            (click)="element.set(item)"
+            [class.selected]="selectedElement() === item"
+        >{{item}}</div>
+    }
+</div>
+

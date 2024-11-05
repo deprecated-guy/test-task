@@ -1,0 +1,6 @@
+@for(err of errors(); track $index) {
+    @if (parenControl.touched && parenControl.invalid) {
+        <p @dropdown >{{err}}</p>
+
+    }
+}

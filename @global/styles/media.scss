@@ -1,0 +1,12 @@
+$break-point-desktop-max: 20000px;
+$break-point-desktop-min: 1260px;
+$break-point-tablet-min: 740px;
+$break-point-tablet-max: $break-point-desktop-min - 1;
+$break-point-mobile-min: 1px;
+$break-point-mobile-max: $break-point-tablet-min - 1;
+$mobile: 'screen and (max-width: #{$break-point-mobile-max})';
+$mobile-portrait: 'screen and (max-width: #{$break-point-mobile-max}) and (orientation: portrait)';
+$tablet: 'screen and (min-width: #{$break-point-tablet-min}) and (max-width: #{$break-point-tablet-max})';
+$desktop: 'screen and (min-width: #{$break-point-desktop-min})';
+/* stylelint-disable-next-line max-line-length */
+$retina: 'only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx)';

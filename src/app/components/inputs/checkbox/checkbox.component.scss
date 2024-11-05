@@ -1,0 +1,15 @@
+@use "@global/styles/mixins";
+
+:host {
+  @include mixins.checked;
+
+  appearance: none;
+  outline: none;
+  cursor: pointer;
+
+  width: 1.375rem;
+  height: 1.375rem;
+  border: var(--app-border);
+  border-radius: var(--app-radius);
+}
+

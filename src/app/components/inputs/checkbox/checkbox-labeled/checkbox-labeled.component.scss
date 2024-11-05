@@ -1,0 +1,24 @@
+@use "@global/styles/mixins";
+
+.wrapper {
+  display: flex;
+  gap: 0.4rem;
+  font-size: 17px;
+  width: max-content;
+  align-items: center;
+}
+
+input {
+  appearance: none;
+  border: none;
+  display: none;
+}
+
+.checkbox {
+  @include mixins.checked;
+
+  width: 1.375rem;
+  height: 1.375rem;
+  border: var(--app-border);
+  border-radius: var(--app-radius);
+}

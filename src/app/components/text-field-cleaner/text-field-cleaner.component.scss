@@ -1,0 +1,11 @@
+@use "@global/styles/mixins";
+
+:host {
+  position: absolute;
+}
+
+button {
+  @include mixins.clear-button();
+  text-align: center;
+  color: currentColor;
+}

@@ -1,0 +1,11 @@
+<div class="button">
+    @if(computedIcon() && iconType() == 'transparent') {
+        <svg class="icon" [style.mask-image]="computedIcon()"></svg>
+    } @else if (computedIcon() && iconType() ==='colored') {
+        <img class="icon" [src]="computedIcon()" alt="">
+    }
+
+    @if (appearance() !== 'input-button' && appearance() !== 'icon-button') {
+        <div class="content"><ng-content></ng-content></div>
+    }
+</div>

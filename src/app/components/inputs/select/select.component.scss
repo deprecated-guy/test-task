@@ -1,0 +1,47 @@
+.select-container {
+  position: relative;
+  display: flex;
+  height: var(--field-height);
+  border: var(--app-border);
+  border-radius: var(--app-radius);
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  min-width: 5rem;
+
+}
+
+.label,
+input,
+.icon {
+  position: absolute;
+}
+
+.icon {
+  right: 1.875rem;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.label {
+  left: 0.625rem;
+  font: var(--input-font);
+  color: var(--input-plcehoder-color);
+}
+
+
+
+input {
+  left: 0.625rem;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  outline: none;
+  border: none;
+}
+
+
+app-dropdown {
+  position: absolute;
+  width: auto;
+}
