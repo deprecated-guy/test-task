@@ -15,5 +15,6 @@ export class CheckboxLabeledComponent extends Control<boolean> {
 		const newValue = !this.value();
 
 		this.value.set(newValue);
+		this.parenControl.control?.setValue(this.value());
 	}
 }

@@ -4,7 +4,7 @@
         <div
             class="option"
             role="option"
-            (click)="element.set(item)"
+            (click)="selectValue(item)"
             [class.selected]="selectedElement() === item"
         >{{item}}</div>
     }
