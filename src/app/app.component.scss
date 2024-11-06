@@ -1,0 +1,5 @@
+@use '@global/styles';
+
+:host {
+	@include styles.root;
+}

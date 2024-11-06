@@ -10,6 +10,7 @@ import { Control, provideAsControl } from '@global/other';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	providers: [provideAsControl(CheckboxComponent)],
 	host: {
+		'[class.errored]': 'parenControl.invalid && parenControl.touched',
 		'[class.checked]': 'value()',
 		'(click)': 'onClick()',
 	},

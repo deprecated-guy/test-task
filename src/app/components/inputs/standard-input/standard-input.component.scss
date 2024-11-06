@@ -1,87 +1,91 @@
-@use "@global/styles/mixins";
+@use '@global/styles/mixins';
 
 .wrapper {
-  display: flex;
-  gap: 0.12rem;
-  align-items: center;
-  width: auto;
+	display: flex;
+	gap: 0.12rem;
+	align-items: center;
+	width: auto;
 }
 
 .input-wrapper {
-  border:  rgba(195, 195, 195, 1) solid 0.1rem;
-  position: relative;
-  display: flex;
-  height: 44px;
-  border-radius: 0.25rem;
-  align-items: center;
-  text-align: center;
-  width: 100%;
-  min-width: 5rem;
+	position: relative;
+	display: flex;
+	align-items: center;
+	width: 100%;
+	min-width: 4.25rem;
+	height: 44px;
+	border: rgb(195 195 195 / 100%) solid 0.1rem;
+	border-radius: 0.25rem;
+	text-align: center;
 
-  &.disabled {
-    pointer-events: none;
-  }
+	&.disabled {
+		pointer-events: none;
+	}
 }
+
 .errored {
-  border: 0.1875rem solid red
+	border-color: red;
 }
 
 input,
 .placeholder {
-  position: absolute;
+	position: absolute;
 }
 
 .placeholder {
-  z-index: 1;
-  left: 10px;
-  font: var(--input-font);
-  color: var(--input-plcehoder-color);
+	left: 0.8125rem;
+	z-index: 1;
+	color: var(--input-plcehoder-color);
+	font: var(--input-font);
 }
 
 input {
-  @include mixins.clear-input;
+	@include mixins.clear-input;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0.8125rem;
+	font: var(--input-font);
+	appearance: none;
 
-  right: 0;
-  left: 10px;
-  top: 0;
-  bottom: 0;
-  -webkit-appearance:none;
+	&[type='number'] {
+		--moz-appearance: textfield;
+		left: 0.312rem;
+		appearance: textfield;
+	}
 
-  &[type='number'] {
-    left: 0;
-    text-align: center;
-    appearance: textfield;
-    --mox-appearance: textfield;
-  }
-  &::-webkit-inner-spin-button,
-  &::-webkit-outer-spin-button  {
-    display: none;
-  }
+	&::-webkit-inner-spin-button,
+	&::-webkit-outer-spin-button {
+		display: none;
+	}
 }
 
 .buttons-wrapper {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 .hr {
-  @include mixins.hr-horizontal(rgba(157, 157, 157, 1));
+	@include mixins.hr-horizontal(rgba(157, 157, 157, 1));
 }
 
 .button[appButton] {
-  ::ng-deep .icon {
-    width: 0.5786rem;
-  }
+	width: 30px;
+
+	::ng-deep .icon {
+		width: 0.5786rem;
+		margin: 0 0.7rem;
+	}
 }
 
 .cleaner {
-  z-index: 1;
-  position: absolute;
-  right: 10px;
+	position: absolute;
+	right: 10px;
+	z-index: 1;
 }
 
 .opener {
-  z-index: 1;
-  position: absolute;
-  right: 30px;
+	position: absolute;
+	right: 30px;
+	z-index: 1;
 }

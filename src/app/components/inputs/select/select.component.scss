@@ -1,47 +1,50 @@
 .select-container {
-  position: relative;
-  display: flex;
-  height: var(--field-height);
-  border: var(--app-border);
-  border-radius: var(--app-radius);
-  align-items: center;
-  text-align: center;
-  width: 100%;
-  min-width: 5rem;
-
+	position: relative;
+	display: flex;
+	align-items: center;
+	width: 100%;
+	min-width: 5rem;
+	height: var(--field-height);
+	border: var(--app-border);
+	border-radius: var(--app-radius);
+	text-align: center;
 }
 
 .label,
 input,
 .icon {
-  position: absolute;
+	position: absolute;
 }
 
 .icon {
-  right: 1.875rem;
-  cursor: pointer;
-  z-index: 1;
+	right: 1rem;
+	z-index: 1;
+	cursor: pointer;
 }
 
 .label {
-  left: 0.625rem;
-  font: var(--input-font);
-  color: var(--input-plcehoder-color);
+	left: 0.625rem;
+	color: var(--input-plcehoder-color);
+	font: var(--input-font);
 }
-
-
 
 input {
-  left: 0.625rem;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  outline: none;
-  border: none;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0.8125rem;
+	border: none;
+	outline: none;
+	font: var(--input-font);
 }
 
-
 app-dropdown {
-  position: absolute;
-  width: auto;
+	position: absolute;
+	right: 0;
+	z-index: 2;
+	overflow-y: auto;
+	width: var(--defult-field-width);
+	max-height: 200px;
+	margin: 0 32.5%;
+	background: white;
 }

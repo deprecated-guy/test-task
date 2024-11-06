@@ -1,6 +1,38 @@
-@import 'styles/variables';
-@import "styles/fonts";
+@import 'styles/variables.scss';
+@import 'styles/fonts.scss';
 
 body {
-  font-family: 'PT Sans',sans-serif;
+	font-family: 'PT Sans', sans-serif;
+}
+
+.flexible-container {
+	max-width: 68.75rem;
+	margin: 0 auto;
+	padding: 0 0.625rem;
+}
+
+@mixin root {
+	--input-plcehoder-color: rgb(157 157 157 / 100%);
+	--input-font: 200 1.0625rem/1.375rem 'PT Sans', sans-serif;
+	--app-padding: 0.25rem;
+	--app-border: rgb(195 195 195) solid 0.1rem;
+	--app-radius: 0.25rem;
+	--field-height: 2.75rem;
+	--height-s: 1.375rem;
+	--input-buton-bg: rgb(223 223 223 / 100%);
+	--heading-font: 500 2.5635rem/3.3156rem 'PT Sans', serif;
+	--notation-font: 300 0.8165rem/1.0513rem 'PT Sans', serif;
+	--notation-color: rgb(157 157 157 / 100%);
+	--item-hover-bg: rgb(255 231 131 / 100%);
+	--item-selected-bg: rgb(255 218 66 / 100%);
+	--defult-field-width: 18.75rem;
+}
+
+.errored {
+	border-color: red;
+}
+
+.field-wrapper {
+	width: auto;
+	max-width: 31.3rem;
 }

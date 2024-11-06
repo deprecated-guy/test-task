@@ -1,0 +1,170 @@
+@import '@global/styles/variables.scss';
+
+.title {
+	margin-top: 5.1rem;
+	margin-left: 2.854rem;
+	font: var(--heading-font) !important;
+}
+
+.form {
+	margin-top: 2.7rem;
+	margin-left: 2.8rem;
+}
+
+.label-container {
+	display: flex;
+	max-width: 8.75rem;
+	margin-top: 0.8rem;
+}
+
+.asterisk {
+	margin-left: 0.05rem;
+	color: red;
+}
+
+.form-field {
+	display: flex;
+	align-items: flex-start;
+
+	&:first-of-type {
+		gap: 7.5rem;
+	}
+
+	&:last-of-type {
+		align-items: flex-start;
+
+		.label-container {
+			margin-top: 0.7rem;
+		}
+	}
+
+	&:not(:first-of-type) {
+		gap: 5.8rem;
+		margin-top: 0.8rem;
+	}
+}
+
+.name-input {
+	width: 31.25rem;
+
+	::ng-deep {
+		.wrapper {
+			width: 31.25rem;
+		}
+	}
+}
+
+.age-input {
+	::ng-deep {
+		.wrapper {
+			width: 4.375rem !important;
+		}
+	}
+
+	::ng-deep .buttons-wrapper {
+		width: 30px;
+	}
+}
+
+.checkbox {
+	&:not(:first-of-type) {
+
+		margin-top: 0.5rem;
+	}
+
+	&.last {
+		::ng-deep.wrapper {
+			font-weight: 600 !important;
+		}
+	}
+}
+
+.select {
+	::ng-deep .select-container {
+
+		width: 18.75rem;
+	}
+}
+
+.with-select {
+	gap: 4.2rem !important;
+
+	&-second {
+		gap: 1.5rem !important;
+		margin-top: 1.3rem !important;
+	}
+
+	.label-container {
+		margin-top: 0;
+	}
+}
+
+.checkboxes {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	row-gap: 0.94rem;
+	margin-top: 0.7rem;
+	margin-left: 0.5rem;
+	column-gap: 2.4rem;
+}
+
+.university-input {
+	::ng-deep .input-wrapper {
+		width: 18.75rem;
+	}
+}
+
+.second {
+	display: flex;
+}
+
+.with-array {
+	gap: 7.9rem !important;
+	align-items: flex-start;
+
+	.outer-wrapper {
+		display: flex;
+		gap: 0.9rem;
+		align-items: flex-start;
+		margin-top: -0.2rem;
+		margin-left: 0.1rem;
+	}
+
+	.buttons-wrapper {
+		display: flex;
+		gap: 0.4rem;
+	}
+
+	.label-container {
+		margin-top: 0.6rem;
+	}
+
+	button {
+		margin-top: 0.7rem;
+		font: var(--input-font);
+	}
+}
+
+.notation {
+	margin-top: 0.4rem;
+	color: var(--notation-color);
+	font: var(--notation-font);
+}
+
+.last {
+	font-weight: 600;
+}
+
+.send-button {
+	justify-content: center;
+	width: 8.8rem;
+	height: 3.3rem;
+	margin-top: 2.37rem;
+	margin-left: 9.8rem;
+	background: var(--item-selected-bg);
+
+	&.disabled {
+		background: rgb(255 231 131);
+		pointer-events: none;
+	}
+}

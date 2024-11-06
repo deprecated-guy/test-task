@@ -1,39 +1,53 @@
-@use'@global/styles/mixins';
+@use '@global/styles/mixins';
 
 :host {
-  @include mixins.clear-button();
-  @include mixins.clear-button();
-  color: currentColor;
+	@include mixins.clear-button;
+	@include mixins.clear-button;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: currentcolor;
 
-  &[data-appearance='input-button'] {
-    background: var(--input-buton-bg);
-    width: var(--height-s);
-    height: var(--height-s);
-  }
+	&[data-appearance='input-button'] {
+		width: var(--height-s);
+		height: var(--height-s);
+		background: var(--input-buton-bg);
 
-  &[data-appearance='icon-button'] {
-    padding: 0.4rem;
-    width: max-content;
-  }
+		.content {
+			display: none;
+		}
+	}
+
+	&[data-appearance='icon-button'] {
+		width: max-content;
+		padding: 0.4rem;
+
+		.content {
+			display: none;
+		}
+	}
 }
 
-.wrapper {
-  display: flex;
-  gap: 0.3rem;
-  height: max-content;
-  width: max-content;
-  align-items: center;
-  justify-content: center;
+.button {
+	display: flex;
+	gap: 0.4rem;
+	align-items: center;
+	justify-content: center;
+	width: max-content;
+	height: max-content;
 }
 
 .icon {
-  display: flex;
-  min-width: 0.5625rem;
-  min-height: 0.5625rem;
-  background: currentColor;
-  max-width: 1.5rem;
-  max-height: 1.5rem;
-  mask-repeat: no-repeat;
-  mask-position: center;
-  margin: 0 auto;
+	display: flex;
+	max-width: 1.625rem;
+	margin: 0 auto;
+	background: currentcolor;
+	mask-repeat: no-repeat;
+	mask-position: center;
+
+	&:is(img) {
+		margin: 0 auto;
+		background: none;
+		mask-image: none;
+	}
 }

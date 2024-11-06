@@ -30,6 +30,10 @@ export class ButtonComponent {
 				return 'triangle-down.svg';
 			}
 		}
-		return `url(${this.icon()})`;
+		if (this.iconType() !== 'colored') {
+			return `url(${this.icon()})`;
+		} else {
+			return this.icon();
+		}
 	});
 }

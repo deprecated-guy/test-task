@@ -14,6 +14,7 @@
 9. [Collecting settings inside of directive](#collecting-the-settings-inside-of-directive)
 10. [Using token inside the component](#using-inside-of-component)
 11. [Conclusion](#conclusion)
+12. [Image/video representations](#arrow-pressing-responsibility)
 
 
 ## Project structure
@@ -72,6 +73,7 @@ which allows you to customize some places even more deeply, for example [validat
 or for more flexible configuration of certain parts of components. Angular 18+ is used, so the examples contain a lot of function calls without arguments - signal calls
 ## Demonstration
 
+![screen](public/2024-11-06_21-58-47.png)
 
 *Interface example with using custom components*
 ## Technologies
@@ -254,3 +256,22 @@ export class StandardInputComponent<T = number | string> extends Control<T> {
 I wouldn’t say that I know very deeply how dependency injection works in Angular, but I tried to show its power at least superficially.
 I used DI in this application only for minimal customization of elements, but in fact, DI allows you to do much more global things than are presented in this application
 
+## Functionality representation
+
+## Arrow pressing responsibility
+
+### if we pressing the arrow button or escape, or enter
+
+![1](public/red-button-spam.gif)
+
+## dropdown will reacts this
+[2024-11-06_22-05-17.mp4](public%2F2024-11-06_22-05-17.mp4)
+
+## Form validation
+
+![2](public/2024-11-06_22-02-38.png)
+
+## And now we have a normally working example of the minimal ui-kit in this form component
+
+# Thanks!
+![source.gif](public%2Fsource.gif)

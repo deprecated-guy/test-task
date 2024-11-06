@@ -1,5 +1,9 @@
-@import "@global/styles";
+@use '@global/styles.scss';
+
+:root {
+	@include styles.root;
+}
 
 body {
-  font-family: 'PT Sans', serif;
+	font: var(--input-font);
 }

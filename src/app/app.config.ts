@@ -10,8 +10,8 @@ export const appConfig: ApplicationConfig = {
 		provideAnimations(),
 		provideFieldErrorsGlobally({
 			required: 'This field is required',
-			minLength: 'Minimal value length is 1 symbol',
-			maxLength: 'Minimal value length is 22 symbols',
+			minlength: 'Minimal value length is 2 symbol',
+			maxlength: 'Minimal value length is 22 symbols',
 			requiredTrue: 'This field is required',
 		}),
 	],

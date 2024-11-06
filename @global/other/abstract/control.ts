@@ -47,13 +47,9 @@ export abstract class Control<T> implements ControlValueAccessor, OnInit {
 		return this.injector.get(NgControl);
 	}
 
-	setDisabledState(isDisabled: boolean): void {
-		this.disabled.set(isDisabled);
-		if (isDisabled) {
-			this.parenControl.control?.disable();
-		} else {
-			this.parenControl.control?.enable();
-		}
+	onModelChange(event: T): void {
+		this.value.set(event);
+		this.onChange(event);
 	}
 }
 

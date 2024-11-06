@@ -1,24 +1,22 @@
 :host {
-  display: block;
-  position: absolute;
-  width: 100%;
-  padding: 0.5rem;
-  right: 0;
-  left: 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	position: absolute;
+	right: 0;
+	left: 0;
+	display: block;
+	padding: 0.5rem;
+	box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
 }
 
 .option {
-  cursor: pointer;
-  padding: 0.25rem;
-  width: auto;
+	width: auto;
+	padding: 0.25rem;
+	cursor: pointer;
 
-  &:hover {
-    background: rgba(255, 231, 131, 1);
-  }
+	&:hover {
+		background: var(--item-hover-bg);
+	}
 }
 
 .selected {
-  background: rgba(255, 218, 66, 1);
+	background: var(--item-selected-bg);
 }
-

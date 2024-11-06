@@ -6,7 +6,7 @@ import { Control, provideAsControl } from '@global/other/abstract/control';
 import { ButtonComponent } from '../../button/button.component';
 import { PasswordOpenerComponent } from '../../password-opener/password-opener.component';
 import { TextFieldCleanerComponent } from '../../text-field-cleaner/text-field-cleaner.component';
-import { InputSettingsDirective } from '../input-settings.directive';
+import { InputSettingsDirective, provideSettingsDirective } from '../input-settings.directive';
 
 @Component({
 	selector: 'app-standard-input',
@@ -22,7 +22,7 @@ import { InputSettingsDirective } from '../input-settings.directive';
 	templateUrl: './standard-input.component.html',
 	styleUrls: ['./standard-input.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	providers: [provideAsControl(StandardInputComponent)],
+	providers: [provideAsControl(StandardInputComponent), provideSettingsDirective()],
 })
 export class StandardInputComponent<T = number | string> extends Control<T> {
 	readonly type = input<'text' | 'email' | 'password' | 'number'>('text');
@@ -53,11 +53,6 @@ export class StandardInputComponent<T = number | string> extends Control<T> {
 		if (this.value() === '' || this.value() === ' ' || this.value() === null) {
 			this.onTouch();
 		}
-	}
-
-	onModelChange(e: T): void {
-		this.onChange(e);
-		this.value.set(e);
 	}
 
 	add(): void {

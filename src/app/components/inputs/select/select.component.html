@@ -1,10 +1,16 @@
 
-<div class="select-container" (click)="openCloseDropDown()">
+<div class="select-container"
+     (click)="openCloseDropDown()"
+     [class.errored]="parenControl.invalid && parenControl.touched"
+>
     <div class="label">
         <ng-content></ng-content>
     </div>
     <div class="select-input">
-        <input [ngModel]="value()" [ngModelOptions]="{standalone: true}">
+        <input
+                [ngModel]="value()"
+                [ngModelOptions]="{standalone: true}"
+                (ngModelChange)="onModelChange($event)">
     </div>
 
     <div class="icon" [@rotation]="open() ? 'rotated' : 'default'" (click)="openCloseDropDown()">
@@ -13,7 +19,7 @@
 </div>
 
 @if(open()) {
-    <app-dropdown [items]="items()" [element]="value()" (elementChange)="setOpen($event)" @dropdown></app-dropdown>
+    <app-dropdown [items]="filteredItems()" [element]="value()" (elementChange)="setOpen($event)" @dropdown></app-dropdown>
 }
 
 

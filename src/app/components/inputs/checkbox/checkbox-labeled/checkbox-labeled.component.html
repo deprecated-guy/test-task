@@ -2,7 +2,11 @@
     <div class="label" (click)="onClick()">
         <ng-content></ng-content>
     </div>
-    <div class="checkbox" (click)="onClick()" [class.checked]="value()">
+    <div
+        class="checkbox"
+        (click)="onClick()"
+        [class.checked]="value()"
+        [class.errored]="parenControl.invalid && parenControl.touched">
         <input type="checkbox">
     </div>
 </div>

@@ -1,18 +1,211 @@
-<form [formGroup]="form">
-    <div class="fomfild">
-        <app-standard-input
-                [formControlName]="'test'"
-                [type]="'password'"
-                [textFieldCleaner]="true"
-                [textFieldPasswordOpener]="true"
-        >
-            Например, ВолГУ
-        </app-standard-input>
+<div class="flexible-container">
 
-        <app-error [errors]="[] | fieldError | async" [formControl]="form.controls.test"></app-error>
+    <div class="wrapper">
+        <div class="title">
+            Анкета
+        </div>
+
+        <div class="form" [formGroup]="form">
+            <div class="form-field">
+                <div class="label-container">
+                    <div class="label">
+                        Имя
+                    </div>
+                    <div class="asterisk">*</div>
+                </div>
+
+                <div class="field-wrapper">
+                    <app-standard-input
+                            [type]="'text'"
+                            [formControlName]="'name'"
+                            [textFieldCleaner]="true"
+                            class="name-input"
+                    ></app-standard-input>
+
+                    <app-error
+                            class="error"
+                            [formControl]="form.controls.name"
+                            [errors]="[] | fieldError | async"
+                    ></app-error>
+                </div>
+
+            </div>
+
+            <div class="form-field">
+                <div class="label-container">
+                    <div class="label">
+                        Возраст
+                    </div>
+                    <div class="asterisk">*</div>
+                </div>
+
+                <div class="field-wrapper">
+                    <app-standard-input
+                            [type]="'number'"
+                            [formControlName]="'age'"
+                            class="age-input"
+                    ></app-standard-input>
+
+                    <app-error
+                            class="error"
+                            [formControl]="form.controls.age"
+                            [errors]="[] | fieldError | async"
+                    ></app-error>
+                </div>
+
+            </div>
+
+            <div class="form-field with-select">
+                <div class="label-container">
+                    <div class="label">
+                        <div class="first">
+                            Семейное
+                        </div>
+                        <div class="second">
+                            <div class="text">положение</div><div class="asterisk">*</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field-wrapper">
+                    <app-select
+                            [firstSelected]="complications[0]"
+                            [items]="complications"
+                            [formControlName]="'complication'"
+                            class="select"
+                    ></app-select>
+
+                    <app-error
+                            class="error"
+                            [formControl]="form.controls.complication"
+                            [errors]="[] | fieldError | async"
+                    ></app-error>
+                </div>
+
+            </div>
+
+            <div class="form-field with-array">
+                <div class="label-container">
+                    <div class="label">
+                        ВУЗ
+                    </div>
+                </div>
+
+                <div class="inner-container">
+                    @for(ctr of form.controls.universities.controls; track $index) {
+                        <div class="outer-wrapper">
+                            <div class="field-wrapper">
+                                <app-standard-input
+                                        [formControl]="ctr"
+                                        [textFieldCleaner]="true"
+                                        class="university-input"
+                                >Например, ВолгГУ</app-standard-input>
+
+                                <app-error
+                                        class="error"
+                                        [formControl]="ctr"
+                                        [errors]="[] | fieldError | async"
+                                ></app-error>
+                            </div>
+
+                            <div class="buttons-wrapper">
+                                @if(form.controls.universities.controls.length > 1) {
+                                    <button
+                                            appButton
+                                            [iconType]="'colored'"
+                                            [appearance]="'icon-button'"
+                                            [icon]="'trash.svg'"
+                                            type="button"
+                                            (click)="removeField('universities', $index)"
+                                    ></button>
+                                }
+                                <button
+                                        appButton
+                                        [iconType]="'colored'"
+                                        [icon]="'add-ellipse.svg'"
+                                        type="button"
+                                        (click)="addField('universities')"
+                                >Добавить еще</button>
+                            </div>
+                        </div>
+
+                    }
+
+                    <div class="notation">
+                        Укажите заведения, в которых вы учились.
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            <div class="form-field with-select-second">
+                <div class="label-container">
+                    <div class="label">
+                        Место рождения
+                    </div>
+                    <div class="asterisk">*</div>
+                </div>
+
+                <div class="field-wrapper">
+                    <app-select
+                            [firstSelected]="cities()[0]"
+                            [items]="cities()"
+                            [formControlName]="'city'"
+                            class="select"
+                    ></app-select>
+
+                    <app-error
+                            class="error"
+                            [formControl]="form.controls.city"
+                            [errors]="[] | fieldError | async"
+                    ></app-error>
+                </div>
+
+            </div>
+
+            <div class="form-field with-checkboxes">
+                <div class="label-container">
+                    <div class="label">
+                        Навыки
+                    </div>
+                </div>
+
+                <div class="checkboxes">
+                    @for(ctr of form.controls.abilities.controls; track $index) {
+                        @if ($index === form.controls.abilities.controls.length - 1) {
+                            <app-checkbox-labeled
+                                    [formControl]="ctr"
+                                    (click)="checkUncheckAll()"
+                                    class="last"
+                            >Выделить все</app-checkbox-labeled>
+                        } @else {
+
+                            <div class="field-wrapper">
+                                <app-checkbox-labeled
+                                        [formControl]="ctr"
+                                >{{abilities[$index]}}</app-checkbox-labeled>
+                            </div>
+                        }
+
+                    }
+
+                </div>
+
+
+
+            </div>
+
+            <button
+                 class="send-button"
+                 appButton
+                 type="submit"
+                 [class.disabled]="form.invalid"
+                 (click)="submit()"
+            >Отправить</button>
+        </div>
+
     </div>
-
-    <input type="checkbox" appCheckbox [formControlName]="'bl'">
-
-    <app-select [formControlName]="'bl1'" [items]="items"></app-select>
-</form>
+</div>
+{{form.value | json}}{{form.invalid}}
