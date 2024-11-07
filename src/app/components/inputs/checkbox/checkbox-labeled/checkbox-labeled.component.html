@@ -5,7 +5,7 @@
     <div
         class="checkbox"
         (click)="onClick()"
-        [class.checked]="value()"
+        [class.checked]="value() ?? checked()"
         [class.errored]="parenControl.invalid && parenControl.touched">
         <input type="checkbox">
     </div>

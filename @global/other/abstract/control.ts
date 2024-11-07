@@ -20,6 +20,7 @@ export abstract class Control<T> implements ControlValueAccessor, OnInit {
 	readonly value = signal<T | null>(inject(DEFAULT_INPUT_VALUE));
 	readonly injector = inject(Injector);
 	readonly readOnly = input(false);
+	readonly checked = input(false);
 
 	readonly disabled = signal(false);
 

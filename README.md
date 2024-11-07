@@ -251,22 +251,47 @@ export class StandardInputComponent<T = number | string> extends Control<T> {
     //other code you can to see in the StandardInputComponent
 }
 ```
-
 ## Conclusion
-I wouldn’t say that I know very deeply how dependency injection works in Angular, but I tried to show its power at least superficially.
-I used DI in this application only for minimal customization of elements, but in fact, DI allows you to do much more global things than are presented in this application
+Although I may not yet fully understand the depth of dependency injection in Angular, I aimed to demonstrate some of its capabilities. DI in this project allows for minimal customization, but it has the potential for much broader, impactful use cases.
 
-## Functionality representation
-
-## Arrow pressing responsibility
-
-### if we pressing the arrow button or escape, or enter
+## Image/Video Representations
+Handling Keyboard Events (Arrow, Escape, Enter)
 
 ![1](public/red-button-spam.gif)
 
-## dropdown will reacts this
-[2024-11-06_22-05-17.mp4](public%2F2024-11-06_22-05-17.mp4)
+## if we want to emit keydown event, select dropdown react to that
 
+![2024-11-06_22-05-17.gif](public%2F2024-11-06_22-05-17.gif)
+
+### Behaviors
+1. ArrowUp:
+
+* Behavior: When the ArrowUp key is pressed, the selected index in the dropdown list moves upward by 1.
+* Logic:
+The selected index is decremented by 1 ```(current - 1)```.
+If the index reaches the beginning (index 0), pressing ArrowUp again wraps the selection to the last item in the list.
+Outcome: The item at the new selected index is highlighted.
+
+2. ArrowDown:
+
+* Behavior: When the ArrowDown key is pressed, the selected index moves downward by 1.
+* Logic:
+The selected index is incremented by 1 (current + 1).
+If the index reaches the end of the list, pressing ArrowDown again wraps the selection to the first item (index 0).
+* Outcome: The item at the new selected index is highlighted.
+3. Enter: 
+* Behavior: When the Enter key is pressed, the item currently highlighted by the selected index is chosen.
+* Logic:
+The selected item’s value is saved as the chosen item.
+The dropdown menu closes, and the chosen item is displayed in the input field.
+* Outcome: The user’s selection is confirmed, and the dropdown closes.
+* Income: if dropdown state is closed - dropdown changing state into open
+4. Escape:
+* Behavior: When the Escape key is pressed, the dropdown menu closes without selecting any new item.
+* Logic:
+Any highlight on the selected index is removed.
+The dropdown is set to a closed state.
+* Outcome: The dropdown closes, discarding any pending selections or changes. 
 ## Form validation
 
 ![2](public/2024-11-06_22-02-38.png)

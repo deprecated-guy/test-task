@@ -172,24 +172,24 @@
 
                 <div class="checkboxes">
                     @for(ctr of form.controls.abilities.controls; track $index) {
-                        @if ($index === form.controls.abilities.controls.length - 1) {
-                            <app-checkbox-labeled
-                                    [formControl]="ctr"
-                                    (click)="checkUncheckAll()"
-                                    class="last"
-                            >Выделить все</app-checkbox-labeled>
-                        } @else {
 
                             <div class="field-wrapper">
                                 <app-checkbox-labeled
                                         [formControl]="ctr"
                                 >{{abilities[$index]}}</app-checkbox-labeled>
-                            </div>
-                        }
-                    }
-                </div>
-            </div>
 
+                                <app-error [formControl]="ctr" [errors]="[] | fieldError | async"></app-error>
+                            </div>
+
+                    }
+                        <app-checkbox-labeled
+                                [checked]="allChecked()"
+                                [formControlName]="'checkAll'"
+                                (click)="checkUncheckAll()"
+                                class="last"
+                        >Выделить все</app-checkbox-labeled>
+             </div>
+            </div>
             <button
                  class="send-button"
                  appButton

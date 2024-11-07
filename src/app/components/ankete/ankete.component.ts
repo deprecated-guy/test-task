@@ -3,8 +3,10 @@ import type { AbstractControl } from '@angular/forms';
 import type { Request } from '@global/other';
 import { AsyncPipe, JsonPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { FormArray, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ABILITIES, CITIES, parseFromLS, saveToLS } from '@global/other';
+import { combineLatest, map } from 'rxjs';
 import { FieldErrorPipe } from '../../pipes/field-error.pipe';
 import { ButtonComponent } from '../button/button.component';
 import { DropdownComponent } from '../dropdown/dropdown.component';
@@ -96,11 +98,18 @@ export class AnketeComponent implements OnInit {
 			new FormControl<boolean | null>(null, {
 				nonNullable: true,
 			}),
-			new FormControl<boolean | null>(null, {
-				nonNullable: true,
-			}),
 		]),
+		checkAll: new FormControl<boolean | null>(null, {
+			nonNullable: true,
+		}),
 	});
+
+	readonly allChecked = toSignal(
+		combineLatest(this.form.controls.abilities.controls.map((control) => control.valueChanges)).pipe(
+			map((values) => values.every((value) => value === true)),
+		),
+		{ initialValue: false },
+	);
 
 	readonly complications = ['Не важно', 'Не женат / не замужем', 'Женат / замужем'];
 
@@ -142,13 +151,18 @@ export class AnketeComponent implements OnInit {
 	checkUncheckAll(): void {
 		const abilitiesArray = this.form.controls.abilities as FormArray;
 
+		// Проверка, все ли чекбоксы отмечены
+		const allChecked = abilitiesArray.controls.every((control) => control.value === true);
+
+		// Включаем/выключаем все чекбоксы в зависимости от состояния
 		abilitiesArray.controls.forEach((control) => {
 			if (control instanceof FormControl) {
-				const currentValue = control.value;
-
-				control.setValue(!currentValue);
+				control.setValue(!allChecked);
 			}
 		});
+
+		// Обновляем значения формы после изменения всех чекбоксов
+		abilitiesArray.updateValueAndValidity();
 	}
 
 	submit(): void {

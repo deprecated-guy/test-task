@@ -82,9 +82,15 @@ export class SelectComponent extends Control<string> {
 	onEnter(e: KeyboardEvent): void {
 		preventDefault(e);
 
-		const el = this.items()[this.dropdown()!.index()];
-		this.dropdown()!.element.set(el);
-		this.parenControl.control!.setValue(this.value());
+		if (this.open()) {
+			const el = this.items()[this.dropdown()!.index()];
+			this.dropdown()!.element.set(el);
+			this.parenControl.control!.setValue(this.value());
+			this.open.set(false);
+		} else {
+			this.open.set(true);
+			this.value.set(null);
+		}
 	}
 
 	@HostListener('keydown.arrowDown', ['$event'])
